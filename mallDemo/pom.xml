@@ -15,14 +15,11 @@
     </properties>
     <dependencies>
         <dependency>
-<<<<<<< HEAD
-=======
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.4</version>
         </dependency>
         <dependency>
->>>>>>> bc989c6 (解决无法调用js中的方法)
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
@@ -80,11 +77,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-<<<<<<< HEAD
-                <version>${spring-boot.version}</version>
-=======
                 <version>2.6.11</version>
->>>>>>> bc989c6 (解决无法调用js中的方法)
                 <configuration>
                     <mainClass>com.example.malldemo.MallDemoApplication</mainClass>
                     <skip>true</skip>
