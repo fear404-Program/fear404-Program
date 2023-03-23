@@ -1,9 +1,11 @@
 package com.example.malldemo.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.malldemo.entity.User;
 import com.example.malldemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,10 +24,11 @@ public class UserController {
     ModelAndView modelAndView = new ModelAndView();
 
     @PostMapping("/login")
-    public ModelAndView login(@RequestParam User user){
-        Map<String, String> map = userService.selectUserByName(user.getUserName());
-        modelAndView.addObject(map);
-        modelAndView.setViewName("index");
+    public ModelAndView login(@RequestBody JSONObject jsonObject){
+        User user = JSONObject.toJavaObject(jsonObject,User.class);
+//        Map<String, String> map = userService.selectUserByName(user.getUserName());
+//        modelAndView.addObject(map);
+//        modelAndView.setViewName("index");
         return modelAndView;
     }
 }

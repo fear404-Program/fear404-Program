@@ -114,6 +114,7 @@
             background-color: #0e92b3;
         }
     </style>
+<<<<<<< HEAD
 </head>
 <script type="text/javascript" src="jQuery/jquery-3.6.4.min.js">
     console.log("hi");
@@ -130,12 +131,41 @@
 </script>
 <body>
 
+=======
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+<script>
+    login = function () {
+        var userName = document.getElementById("userName").value
+        var userPSW = document.getElementById("userPSW").value
+        var id ="1";
+        var user={
+            "id":id,
+            "userName":userName,
+            "userPSW":userPSW
+        }
+        console.log(userName + "：" + userPSW);
+        $.ajax({
+            url: "http://127.0.0.1:8080/login",
+            type: "post",
+            data: JSON.stringify(user),
+            dataType:"json"
+        })
+    }
+    // document.getElementById("btnLogin").onclick = function() {
+    //     console.log("111");
+    // };
+</script>
+>>>>>>> bc989c6 (解决无法调用js中的方法)
 <div class="form-wrapper">
     <div class="header">
         login
     </div>
     <div class="input-wrapper">
         <div class="border-wrapper">
+<<<<<<< HEAD
             <input type="text" name="username" placeholder="username" class="border-item" autocomplete="off">
         </div>
         <div class="border-wrapper">
@@ -144,6 +174,16 @@
     </div>
     <div class="action">
         <div class="btn" onclick="login();">登陆</div>
+=======
+            <input type="text" id="userName" name="userName" placeholder="username" class="border-item" autocomplete="off">
+        </div>
+        <div class="border-wrapper">
+            <input type="password" id="userPSW" name="userPSW" placeholder="password" class="border-item" autocomplete="off">
+        </div>
+    </div>
+    <div class="action">
+        <div class="btn" id="btnLogin" onclick="login();">登陆</div>
+>>>>>>> bc989c6 (解决无法调用js中的方法)
         <input class="btn" type="submit" onclick="login();">
     </div>
     <div class="icon-wrapper">
