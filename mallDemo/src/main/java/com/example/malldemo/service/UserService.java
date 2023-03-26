@@ -9,5 +9,5 @@ import java.util.Map;
  * @Date 2023/3/23 15:04
  */
 public interface UserService {
-    public Map<String,String> selectUserByName(String userName);
+    public Map<String,String> selectUserByName(User user);
 }

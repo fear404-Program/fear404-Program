@@ -14,10 +14,26 @@
         <spring-boot.version>2.6.11</spring-boot.version>
     </properties>
     <dependencies>
+<!--        热部署工具-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>true</scope>
+        </dependency>
+        <!--阿里JSON工具-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.4</version>
+        </dependency>
+<!--        SpringBoot session 控制器-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-bom</artifactId>
+            <version>2020.0.3</version>
+            <type>pom</type>
+            <scope>import</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

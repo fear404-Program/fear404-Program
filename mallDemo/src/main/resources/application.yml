@@ -1,6 +1,23 @@
 spring:
+  #数据库连接信息
   datasource:
     url: jdbc:mysql://localhost:3306/myMall
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: p5665407
+  #配置热部署
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+      exclude: resources/*
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效
+    mvc:
+      static-path-pattern: /static/**
+#使用modelAndView需要配置
+thymeleaf:
+  #这两个值都是默认的前后缀 可以根据需要自行更改
+  suffix: .html
+  prefix: classpath:/templates/
+

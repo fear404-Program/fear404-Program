@@ -114,12 +114,12 @@
             background-color: #0e92b3;
         }
     </style>
-<<<<<<< HEAD
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </head>
 
 <body>
 <script>
+<!--    使用ajax登陆后端无法跳转页面-->
     login = function () {
         var userName = document.getElementById("userName").value
         var userPSW = document.getElementById("userPSW").value
@@ -129,62 +129,52 @@
             "userName":userName,
             "userPSW":userPSW
         }
-        console.log(userName + "：" + userPSW);
         $.ajax({
-            url: "http://127.0.0.1:8080/login",
+            url: "http://127.0.0.1:8080/user/ajaxLogin",
             type: "post",
-            data: JSON.stringify(user),
-            dataType:"json"
+            data: user,
+            dataType:"json",
+            success:function (result) {
+                if (result.code=='001'){
+                    window.open("http://127.0.0.1:8080/user/index");
+                }
+                console.log(result)
+            }
         })
     }
     // document.getElementById("btnLogin").onclick = function() {
     //     console.log("111");
     // };
 </script>
-=======
-</head>
-<script type="text/javascript" src="jQuery/jquery-3.6.4.min.js">
-    console.log("hi");
-    window.login = function () {
-        var userName = userName;
-        var userPSW = userPSW;
-        console.log(userName + "：" + userPSW);
-        $.ajax({
-            url: "http://localhost:8080/login",
-            type: "post",
-            data: {userName, userPSW}
-        })
-    }
-</script>
-<body>
-
->>>>>>> f43a413 (商场Demo首次上传)
 <div class="form-wrapper">
     <div class="header">
         login
     </div>
+<!--    <div class="input-wrapper">-->
+<!--        <div class="border-wrapper">-->
+<!--            <input type="text" id="userName" name="userName" placeholder="username" class="border-item" autocomplete="off">-->
+<!--        </div>-->
+<!--        <div class="border-wrapper">-->
+<!--            <input type="password" id="userPSW" name="userPSW" placeholder="password" class="border-item" autocomplete="off">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="action">-->
+<!--        <div class="btn" id="btnLogin" onclick="login();">登陆</div>-->
+<!--        <input class="btn" type="submit" onclick="login();">-->
+<!--    </div>-->
     <div class="input-wrapper">
-        <div class="border-wrapper">
-<<<<<<< HEAD
-            <input type="text" id="userName" name="userName" placeholder="username" class="border-item" autocomplete="off">
-        </div>
-        <div class="border-wrapper">
-            <input type="password" id="userPSW" name="userPSW" placeholder="password" class="border-item" autocomplete="off">
-        </div>
-    </div>
-    <div class="action">
-        <div class="btn" id="btnLogin" onclick="login();">登陆</div>
-=======
-            <input type="text" name="username" placeholder="username" class="border-item" autocomplete="off">
-        </div>
-        <div class="border-wrapper">
-            <input type="password" name="password" placeholder="password" class="border-item" autocomplete="off">
-        </div>
-    </div>
-    <div class="action">
-        <div class="btn" onclick="login();">登陆</div>
->>>>>>> f43a413 (商场Demo首次上传)
-        <input class="btn" type="submit" onclick="login();">
+        <form action="http://localhost:8080/user/login" method="post">
+            <div class="border-wrapper">
+                <input type="text" id="userName" name="userName" placeholder="username" class="border-item" autocomplete="off">
+            </div>
+            <div class="border-wrapper">
+                <input type="password" id="userPSW" name="userPSW" placeholder="password" class="border-item" autocomplete="off">
+            </div>
+            <div class="action">
+                <input class="btn" type="submit" value="登陆">
+                <div class="btn" onclick="login()">通过ajax登陆</div>
+            </div>
+        </form>
     </div>
     <div class="icon-wrapper">
         <i class="iconfont icon-weixin"></i>
