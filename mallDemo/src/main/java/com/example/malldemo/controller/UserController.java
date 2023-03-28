@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,11 +26,15 @@ public class UserController {
     ModelAndView modelAndView = new ModelAndView();
 
     @PostMapping("/login")
-    public ModelAndView login(User user){
+    public ModelAndView login(User user, HttpServletRequest request){
         System.out.println(user.getUserName()+":"+user.getUserPSW());
-        Map<String, String> map = userService.selectUserByName(user);
+        Map<String, String> map = userService.login(user);
+        if (map.get("code").equals("001")){
+            request.getSession().setAttribute("user",user);
+        }
         modelAndView.addObject(map);
         modelAndView.setViewName("index");
+
         return modelAndView;
     }
 
@@ -39,8 +45,13 @@ public class UserController {
         System.out.println(userName+":"+userPSW);
         user.setUserName(userName);
         user.setUserPSW(userPSW);
-        Map<String,String> resoutMap = userService.selectUserByName(user);
+        Map<String,String> resoutMap = userService.login(user);
         return resoutMap;
+    }
+    @RequestMapping("/cancellation")
+    public String cancellation(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "/login";
     }
 
     @RequestMapping("/index")

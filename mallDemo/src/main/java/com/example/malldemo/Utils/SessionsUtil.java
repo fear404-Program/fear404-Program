@@ -14,7 +14,16 @@ import javax.servlet.http.HttpSession;
 public class SessionsUtil implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        return HandlerInterceptor.super.preHandle(request, response, handler);
+        String requestURI = request.getRequestURI();
+        HttpSession session = request.getSession();
+        if(requestURI.equals("/login.html")||requestURI.equals("/user/login")){
+            return true;
+        }
+//        System.out.println(session);
+        if (session==null){
+            return false;
+        }
+        return false;
     }
 
     @Override

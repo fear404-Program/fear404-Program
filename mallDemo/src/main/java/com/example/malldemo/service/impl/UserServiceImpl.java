@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public Map<String,String> selectUserByName(User user) {
+    public Map<String,String> login(User user) {
         Map<String,String> resultMap = new HashMap<>();
         User queUser = userMapper.selectUserByName(user.getUserName());
         if (queUser.getUserPSW().equals(user.getUserPSW())){
